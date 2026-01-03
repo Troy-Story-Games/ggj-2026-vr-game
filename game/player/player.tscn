@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://4ksndm8ygrgl"]
+
+[ext_resource type="Script" uid="uid://caa7tcc2w85qf" path="res://game/player/player.gd" id="1_ywqt8"]
+[ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_40wtu"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="3_8soms"]
+[ext_resource type="Script" uid="uid://cmbucw30474iw" path="res://game/player/components/simulator_component.gd" id="3_a4w0n"]
+[ext_resource type="Script" uid="uid://c8w7t01x5mat6" path="res://game/player/components/xr_controller_component.gd" id="3_anr75"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="4_epvkq"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="5_5ghna"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ywqt8"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_40wtu"]
+radius = 0.05
+height = 0.1
+
+[node name="Player" type="XROrigin3D"]
+script = ExtResource("1_ywqt8")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+current = true
+
+[node name="VRCommonShaderCache" parent="XRCamera3D" instance=ExtResource("2_40wtu")]
+
+[node name="LeftController" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
+tracker = &"left_hand"
+show_when_tracked = true
+script = ExtResource("3_anr75")
+
+[node name="HandMesh" type="MeshInstance3D" parent="LeftController"]
+mesh = SubResource("SphereMesh_ywqt8")
+
+[node name="MovementDirect" parent="LeftController" instance=ExtResource("4_epvkq")]
+
+[node name="RightController" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
+tracker = &"right_hand"
+show_when_tracked = true
+script = ExtResource("3_anr75")
+
+[node name="HandMesh" type="MeshInstance3D" parent="RightController"]
+mesh = SubResource("SphereMesh_40wtu")
+skeleton = NodePath("../../LeftController")
+
+[node name="MovementTurn" parent="RightController" instance=ExtResource("5_5ghna")]
+
+[node name="SimulatorComponent" type="Node" parent="." node_paths=PackedStringArray("player", "right_controller", "left_controller", "camera")]
+script = ExtResource("3_a4w0n")
+player = NodePath("..")
+right_controller = NodePath("../RightController")
+left_controller = NodePath("../LeftController")
+camera = NodePath("../XRCamera3D")
+metadata/_custom_type_script = "uid://cmbucw30474iw"
+
+[node name="PlayerBody" parent="." instance=ExtResource("3_8soms")]
+
+[connection signal="button_pressed" from="LeftController" to="." method="_on_left_controller_button_pressed"]
+[connection signal="button_released" from="LeftController" to="." method="_on_left_controller_button_released"]
+[connection signal="button_pressed" from="RightController" to="." method="_on_right_controller_button_pressed"]
+[connection signal="button_released" from="RightController" to="." method="_on_right_controller_button_released"]

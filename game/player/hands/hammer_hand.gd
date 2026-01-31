@@ -1,15 +1,15 @@
-extends RigidBody3D
-class_name Mask
+extends Node
 
-var damage = 0.0;
-var powerName = "None";
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
 	pass
+func _on_enemy_detection(enemy):
+	if enemy is Enemy:
+		enemy.queue_free()

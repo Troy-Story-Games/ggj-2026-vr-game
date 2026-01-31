@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b6q8we0jyymho" path="res://test/test_area.gd" id="1_bquo7"]
 [ext_resource type="Texture2D" uid="uid://wo8657imnrlb" path="res://assets/prototype_dark.png" id="1_hm6su"]
 [ext_resource type="PackedScene" uid="uid://yxr16tt3xtbk" path="res://game/enemy/enemies/construction_enemy.tscn" id="2_0c7br"]
+[ext_resource type="PackedScene" uid="uid://ckghewccwrsbc" path="res://game/masks/hammer_mask.tscn" id="4_gkkwo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gkkwo"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -31,7 +32,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1552127504]
-transform = Transform3D(1, 0, 0, 0, 0.9787602, 0.2050086, 0, -0.2050086, 0.9787602, -0.21624553, 1.166373, 1.2064312)
+transform = Transform3D(1, 0, 0, 0, 0.9787602, 0.2050086, 0, -0.2050086, 0.9787602, 0.48444116, 1.8082614, 3.3883514)
 current = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1790330968]
@@ -41,3 +42,6 @@ material = SubResource("StandardMaterial3D_0c7br")
 
 [node name="Enemy" parent="." unique_id=572730011 instance=ExtResource("2_0c7br")]
 transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, 0, 1.3428353, 0)
+
+[node name="HammerMask" parent="." unique_id=2033139921 instance=ExtResource("4_gkkwo")]
+transform = Transform3D(1, 0, 0, 0, 0.012810313, 0.9999179, 0, -0.9999179, 0.012810313, 2.2454655, 0.83929694, 1.1311061)

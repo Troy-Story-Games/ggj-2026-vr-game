@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dyfblj4xqqoit"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqorm"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_racb8"]
+transparency = 1
+albedo_color = Color(0.5372549, 0.30588236, 0, 1)
+
+[node name="HammerHand" type="Node3D" unique_id=182699137]
+
+[node name="HammerHead" type="CSGBox3D" parent="." unique_id=235030894]
+use_collision = true
+size = Vector3(3, 1.5, 1)
+material = SubResource("StandardMaterial3D_kqorm")
+
+[node name="HammerHandle" type="CSGBox3D" parent="HammerHead" unique_id=19839075]
+transform = Transform3D(0.018377298, 0.99983114, 0, -0.99983114, 0.018377298, 0, 0, 0, 1, 0, -1.9587181, 0)
+use_collision = true
+size = Vector3(2.4423828, 0.6425781, 1)
+material = SubResource("StandardMaterial3D_racb8")

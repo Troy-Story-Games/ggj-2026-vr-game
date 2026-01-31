@@ -7,8 +7,8 @@ var simulation: bool = false
 
 @onready var xr_camera_3d: XRCamera3D = $XRCamera3D
 @onready var simulator_component: SimulatorComponent = $SimulatorComponent
-@onready var left_controller: XRController3D = $LeftController
-@onready var right_controller: XRController3D = $RightController
+@onready var left_controller: XRControllerComponent = $LeftController
+@onready var right_controller: XRControllerComponent = $RightController
 @onready var player_body: XRToolsPlayerBody = $PlayerBody
 
 func get_xr_camera_3d() -> XRCamera3D:
@@ -48,3 +48,9 @@ func _on_mask_detection_area_body_entered(body: Node3D) -> void:
     # if body is Mask:
     # logic
     print("Body entered area: ", body)
+
+func _on_function_pickup_left_controller_has_picked_up(_what: Variant) -> void:
+    left_controller.rumble_for(0.2)
+
+func _on_function_pickup_right_controller_has_picked_up(_what: Variant) -> void:
+    right_controller.rumble_for(0.2)

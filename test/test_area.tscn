@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dq4mrqeueuwsc"]
+
+[ext_resource type="Script" uid="uid://b6q8we0jyymho" path="res://test/test_area.gd" id="1_bquo7"]
+[ext_resource type="Texture2D" uid="uid://wo8657imnrlb" path="res://assets/prototype_dark.png" id="1_hm6su"]
+[ext_resource type="PackedScene" uid="uid://yxr16tt3xtbk" path="res://game/enemy/enemies/construction_enemy.tscn" id="2_0c7br"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gkkwo"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_k74sa"]
+sky_material = SubResource("ProceduralSkyMaterial_gkkwo")
+
+[sub_resource type="Environment" id="Environment_ev5te"]
+background_mode = 2
+sky = SubResource("Sky_k74sa")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0c7br"]
+albedo_texture = ExtResource("1_hm6su")
+uv1_triplanar = true
+
+[node name="TestArea" type="Node3D" unique_id=1779849845]
+script = ExtResource("1_bquo7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2083685911]
+environment = SubResource("Environment_ev5te")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=500435785]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1552127504]
+transform = Transform3D(1, 0, 0, 0, 0.9787602, 0.2050086, 0, -0.2050086, 0.9787602, -0.21624553, 1.166373, 1.2064312)
+current = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1790330968]
+use_collision = true
+size = Vector3(5.638916, 1, 6.798828)
+material = SubResource("StandardMaterial3D_0c7br")
+
+[node name="Enemy" parent="." unique_id=572730011 instance=ExtResource("2_0c7br")]
+transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, 0, 1.3428353, 0)

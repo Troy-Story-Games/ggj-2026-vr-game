@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bfscqjp1bwgww"]
 
 [ext_resource type="Texture2D" uid="uid://wo8657imnrlb" path="res://assets/prototype_dark.png" id="1_agbf7"]
+[ext_resource type="Script" uid="uid://bdalepkw6gu6w" path="res://game/areas/world.gd" id="1_ypvhv"]
 [ext_resource type="PackedScene" uid="uid://bf1gieq3a0tqq" path="res://game/enemy/enemy_spawner.tscn" id="2_f8g1j"]
+[ext_resource type="Texture2D" uid="uid://batf3s6mht5mw" path="res://assets/prototype_purple.png" id="2_o3d45"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_agbf7"]
 
@@ -15,16 +17,30 @@ fog_mode = 1
 fog_density = 1.0
 fog_depth_begin = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fuuu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3d45"]
 albedo_texture = ExtResource("1_agbf7")
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_agbf7"]
-albedo_texture = ExtResource("1_agbf7")
+[sub_resource type="BoxMesh" id="BoxMesh_14vxq"]
+material = SubResource("StandardMaterial3D_o3d45")
+size = Vector3(15, 0.1, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f3yyr"]
+size = Vector3(15, 0.1, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3yyr"]
+albedo_texture = ExtResource("2_o3d45")
 uv1_triplanar = true
-uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_o3d45"]
+material = SubResource("StandardMaterial3D_f3yyr")
+size = Vector3(1.5, 1.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8g1j"]
+size = Vector3(1.5, 1.5, 1)
 
 [node name="World" type="Node3D" unique_id=143279455]
+script = ExtResource("1_ypvhv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=607046335]
 environment = SubResource("Environment_f8g1j")
@@ -32,21 +48,27 @@ environment = SubResource("Environment_f8g1j")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1902773611]
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 0, 0)
 
-[node name="Floor" type="CSGBox3D" parent="." unique_id=1546279032]
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=470060127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
-use_collision = true
-size = Vector3(11.191406, 0.1, 15.024414)
-material = SubResource("StandardMaterial3D_4fuuu")
+mesh = SubResource("BoxMesh_14vxq")
 
-[node name="Table" type="CSGBox3D" parent="." unique_id=274218554]
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=892369506]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=1017276277]
+shape = SubResource("BoxShape3D_f3yyr")
+
+[node name="Table" type="MeshInstance3D" parent="." unique_id=1736838272]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, -1.1)
-use_collision = true
-size = Vector3(1.5, 1.534668, 1)
-material = SubResource("StandardMaterial3D_agbf7")
+mesh = SubResource("BoxMesh_o3d45")
 
 [node name="EnemySpawner" parent="Table" unique_id=1976505705 node_paths=PackedStringArray("target") instance=ExtResource("2_f8g1j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7281562, 0.7659076, 0.0034575462)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6804783, 0.82213235, 0.003000021)
 target = NodePath("../Target")
 
 [node name="Target" type="Marker3D" parent="Table" unique_id=354962170]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.71146834, 0.76680946, 0.0050489902)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Table" unique_id=533840638]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Table/StaticBody3D" unique_id=1155732757]
+shape = SubResource("BoxShape3D_f8g1j")

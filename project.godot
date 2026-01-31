@@ -111,6 +111,13 @@ simulator_menu_button={
 
 3d_physics/layer_1="world"
 3d_physics/layer_2="player"
+3d_physics/layer_3="enemy"
+3d_physics/layer_4="enemy_bones"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+jolt_physics_3d/reference_space=2
 
 [rendering]
 
@@ -122,6 +129,7 @@ environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 [xr]
 
 openxr/enabled=true
+openxr/reference_space=2
 openxr/foveation_level=3
 openxr/foveation_dynamic=true
 openxr/submit_depth_buffer=true

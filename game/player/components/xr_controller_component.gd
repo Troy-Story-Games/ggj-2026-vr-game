@@ -15,16 +15,11 @@ func _physics_process(delta):
     _update_velocity(delta)
 
 func _on_button_pressed(button_name: String):
-    print_debug("controller button press: ", button_name)
-    if button_name == "trigger_click" or button_name == "grip_click":
-        print("DEBUG: Trigger or Grip pressed!")
     if button_name == "primary_click":
         recenter.emit()
 
-func _on_button_released(button_name: String):
-    print_debug("controller button released: ", button_name)
-    if button_name == "trigger_click" or button_name == "grip_click":
-        print("DEBUG: Trigger or grip released!")
+func _on_button_released(_button_name: String):
+    pass
 
 func rumble_for(duration : float, intensity : float = 0.5, frequency: float = 1.0, delay_sec: float = 0.0):
     trigger_haptic_pulse("haptic", frequency, intensity, duration, delay_sec)

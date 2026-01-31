@@ -7,7 +7,11 @@ const EnemyScene = preload("res://game/enemy/enemy.tscn")
 
 func _ready() -> void:
     assert(target, "Target needs to be set")
+    spawn()
 
-func _on_timer_timeout() -> void:
+func spawn() -> void:
     var enemy = Utils.instance_scene_on_main(EnemyScene, global_transform) as Enemy
     enemy.set_target(target.global_transform)
+
+func _on_timer_timeout() -> void:
+    spawn()

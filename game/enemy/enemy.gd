@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends XRToolsPickable
 class_name Enemy
 
 const PoofParticles = preload("res://game/fx/poof_particles.tscn")
@@ -10,8 +10,13 @@ var direction: Vector3 = Vector3.ZERO
 var ragdoll: bool = false
 var target_pos: Vector3 = Vector3.ZERO
 var target_set: bool = false
+var velocity: Vector3
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var enemy_model: Node3D = $EnemyModel
+
+func _ready():
+    freeze = true
 
 func set_target(target_transform: Transform3D):
     target_pos = target_transform.origin
@@ -32,3 +37,14 @@ func _physics_process(delta):
     velocity = (direction * speed) * delta
     look_at(global_transform.origin - direction, Vector3.UP)
     move_and_collide(velocity, false)
+
+func _on_grabbed(pickable: Variant, by: Variant) -> void:
+    print("Grabbed by ", by)
+    ragdoll = true
+    var skel = enemy_model.find_child("Skeleton3D") as Skeleton3D
+    skel.physical_bones_start_simulation()
+
+func _on_dropped(pickable: Variant) -> void:
+    print("Dropped")
+    #set_deferred("freeze", false)
+    #apply_central_impulse(Vector3.UP * 0.1)

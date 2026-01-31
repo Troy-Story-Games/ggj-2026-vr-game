@@ -6,18 +6,14 @@
 [ext_resource type="Script" uid="uid://cmbucw30474iw" path="res://game/player/components/simulator_component.gd" id="3_a4w0n"]
 [ext_resource type="Script" uid="uid://c8w7t01x5mat6" path="res://game/player/components/xr_controller_component.gd" id="3_anr75"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="4_epvkq"]
+[ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="4_j0mij"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="5_5ghna"]
+[ext_resource type="Material" uid="uid://ds2dpvbpht0ea" path="res://addons/godot-xr-tools/hands/materials/labglove.tres" id="5_gb4gm"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="7_uv2nh"]
+[ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="8_gb4gm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_anr75"]
 radius = 0.08393856
-
-[sub_resource type="SphereMesh" id="SphereMesh_ywqt8"]
-radius = 0.05
-height = 0.1
-
-[sub_resource type="SphereMesh" id="SphereMesh_40wtu"]
-radius = 0.05
-height = 0.1
 
 [node name="Player" type="XROrigin3D" unique_id=508514659]
 script = ExtResource("1_ywqt8")
@@ -38,10 +34,12 @@ tracker = &"left_hand"
 show_when_tracked = true
 script = ExtResource("3_anr75")
 
-[node name="HandMesh" type="MeshInstance3D" parent="LeftController" unique_id=803167842]
-mesh = SubResource("SphereMesh_ywqt8")
+[node name="LeftHand" parent="LeftController" unique_id=1620100282 instance=ExtResource("4_j0mij")]
+hand_material_override = ExtResource("5_gb4gm")
 
 [node name="MovementDirect" parent="LeftController" unique_id=1868435245 instance=ExtResource("4_epvkq")]
+
+[node name="FunctionPickup" parent="LeftController" unique_id=1977594955 instance=ExtResource("7_uv2nh")]
 
 [node name="RightController" type="XRController3D" parent="." unique_id=1062506974]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
@@ -49,11 +47,12 @@ tracker = &"right_hand"
 show_when_tracked = true
 script = ExtResource("3_anr75")
 
-[node name="HandMesh" type="MeshInstance3D" parent="RightController" unique_id=1711544714]
-mesh = SubResource("SphereMesh_40wtu")
-skeleton = NodePath("../../LeftController")
+[node name="RightHand" parent="RightController" unique_id=93438000 instance=ExtResource("8_gb4gm")]
+hand_material_override = ExtResource("5_gb4gm")
 
 [node name="MovementTurn" parent="RightController" unique_id=658858190 instance=ExtResource("5_5ghna")]
+
+[node name="FunctionPickup" parent="RightController" unique_id=1132399682 instance=ExtResource("7_uv2nh")]
 
 [node name="SimulatorComponent" type="Node" parent="." unique_id=1325402762 node_paths=PackedStringArray("player", "right_controller", "left_controller", "camera")]
 script = ExtResource("3_a4w0n")

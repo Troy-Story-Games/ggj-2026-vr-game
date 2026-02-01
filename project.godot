@@ -14,9 +14,9 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="ggj-2026-vr-game"
-config/description="GGJ 2026 Template Project"
-config/version="0.0.1"
+config/name="Face Lift"
+config/description="Throw, smash, and whisk away an armada of tiny construction workers attempting to unearth the Tower of Doom from your living room table. Swap masks to gain the abilities needed to thwart the plans of the mischievous miniature military (and maybe gain a new high score while you're at it)."
+config/version="1.0.0"
 run/main_scene="uid://36ms7phiqw2i"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"

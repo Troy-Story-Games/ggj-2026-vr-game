@@ -23,25 +23,6 @@ radius = 0.062
 [node name="Player" type="XROrigin3D" unique_id=508514659]
 script = ExtResource("1_ywqt8")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=171603925]
-
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1983327140]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control" unique_id=279184566]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-
 [node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1971797437]
 current = true
 

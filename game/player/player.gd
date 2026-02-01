@@ -84,10 +84,7 @@ func set_mask_screen_shade(color: Color) -> void:
 func put_on_mask(hand_scene_name: String):
     SoundFx.play("maskon", 1.0, -15.0)
     if hand_scene_name == "spectral_hand":
-        set_mask_screen_shade(Color("#599fC3", 0.9))
         Events.player_put_on_spectral_mask.emit()
-    else:
-        set_mask_screen_shade(Color("#EA8143", 0.9))
     left_function_pickup.enabled = false
     var hand_scene: PackedScene = Utils.get_hand(hand_scene_name)
     var player_hand: PlayerHand = hand_scene.instantiate() as PlayerHand

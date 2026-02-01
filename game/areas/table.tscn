@@ -90,7 +90,7 @@ target = NodePath("../Target5")
 spawn_type = "spectral_enemy"
 
 [node name="EnemySpawner3" parent="SpectralEnemySpawners" unique_id=387708555 node_paths=PackedStringArray("target") instance=ExtResource("2_tsilo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7394486, 0.70354366, -0.4227295)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7394486, 0.9530524, -0.4227295)
 rand_min = 8.0
 rand_max = 25.0
 target = NodePath("../Target6")

@@ -96,5 +96,32 @@ text = "Don't let them
 finish the tower!!"
 horizontal_alignment = 1
 
+[node name="AR_Label" type="Label" parent="MainMenu" unique_id=129158696]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 81.0
+offset_right = 351.0
+offset_bottom = 206.0
+text = "AR Mode"
+horizontal_alignment = 1
+
+[node name="AR_on" type="Button" parent="MainMenu" unique_id=180041923]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 122.0
+offset_right = 173.0
+offset_bottom = 168.0
+text = "On"
+
+[node name="AR_off" type="Button" parent="MainMenu" unique_id=274889551]
+layout_mode = 0
+offset_left = 191.0
+offset_top = 121.0
+offset_right = 317.0
+offset_bottom = 169.0
+text = "Off"
+
 [connection signal="pressed" from="MainMenu/MenuButtonContainer/VBoxContainer/Play Button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenu/MenuButtonContainer/VBoxContainer/Exit Button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MainMenu/AR_on" to="." method="_on_ar_on_pressed"]
+[connection signal="pressed" from="MainMenu/AR_off" to="." method="_on_ar_off_pressed"]

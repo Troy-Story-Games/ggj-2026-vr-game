@@ -29,90 +29,90 @@ var enemy_type: String
 @onready var enemy_collision_shape_3d: CollisionShape3D = $EnemyHitbox/CollisionShape3D
 
 func _ready():
-    assert(enemy_scene, "Enemy type not set")
-    freeze = true
-    enemy_model = enemy_scene.instantiate()
-    add_child(enemy_model)
-    physical_bone_simulator_3d = enemy_model.find_child("PhysicalBoneSimulator3D") as PhysicalBoneSimulator3D
-    animation_player = enemy_model.find_child("AnimationPlayer") as AnimationPlayer
-    if not can_grab_enemy:
-        set_collision_layer_value(5, false)
+	assert(enemy_scene, "Enemy type not set")
+	freeze = true
+	enemy_model = enemy_scene.instantiate()
+	add_child(enemy_model)
+	physical_bone_simulator_3d = enemy_model.find_child("PhysicalBoneSimulator3D") as PhysicalBoneSimulator3D
+	animation_player = enemy_model.find_child("AnimationPlayer") as AnimationPlayer
+	if not can_grab_enemy:
+		set_collision_layer_value(5, false)
 
 func set_target(target_transform: Transform3D):
-    target_pos = target_transform.origin
-    target_set = true
+	target_pos = target_transform.origin
+	target_set = true
 
 func _process(_delta):
-    if ragdoll or not target_set:
-        return
-    if animation_player and not animation_player.is_playing():
-        play_moving_animation()
+	if ragdoll or not target_set:
+		return
+	if animation_player and not animation_player.is_playing():
+		play_moving_animation()
 
 func _physics_process(delta):
-    if ragdoll or not target_set:
-        return  # Don't need to move if we're ragdoll or we don't have a target
-    if global_transform.origin.distance_to(target_pos) <= arrival_safe_distance:
-        play_building_animation()
-        return
+	if ragdoll or not target_set:
+		return  # Don't need to move if we're ragdoll or we don't have a target
+	if global_transform.origin.distance_to(target_pos) <= arrival_safe_distance:
+		play_building_animation()
+		return
 
-    direction = global_transform.origin.direction_to(target_pos).normalized()
-    direction.y = 0  # Only need the x,z direction
-    velocity = (direction * speed) * delta
-    look_at(global_transform.origin - direction, Vector3.UP)
-    move_and_collide(velocity, false)
+	direction = global_transform.origin.direction_to(target_pos).normalized()
+	direction.y = 0  # Only need the x,z direction
+	velocity = (direction * speed) * delta
+	look_at(global_transform.origin - direction, Vector3.UP)
+	move_and_collide(velocity, false)
 
 func try_play_animation(anim_name: String):
-    if not animation_player:
-        return
-    animation_player.play(anim_name)
+	if not animation_player:
+		return
+	animation_player.play(anim_name)
 
 func play_moving_animation():
-    match enemy_type:
-        "construction_enemy", "spectral_enemy":
-            try_play_animation("ConstructorWalking")
-        "forklift_enemy":
-            try_play_animation("ForkliftDriving")
+	match enemy_type:
+		"construction_enemy", "spectral_enemy":
+			try_play_animation("ConstructorWalking")
+		"forklift_enemy":
+			try_play_animation("ForkliftDriving")
 
 func play_building_animation():
-    match enemy_type:
-        "construction_enemy", "spectral_enemy":
-            try_play_animation("ConstructorWalking")
-        "forklift_enemy":
-            try_play_animation("ForkliftBuilding")
+	match enemy_type:
+		"construction_enemy", "spectral_enemy":
+			try_play_animation("ConstructorWalking")
+		"forklift_enemy":
+			try_play_animation("ForkliftBuilding")
 
 func play_held_animation():
-    match enemy_type:
-        "construction_enemy", "spectral_enemy":
-            try_play_animation("ConstructorInAir")
+	match enemy_type:
+		"construction_enemy", "spectral_enemy":
+			try_play_animation("ConstructorInAir")
 
 func play_driving_animation():
-    match enemy_type:
-        "construction_enemy", "spectral_enemy":
-            try_play_animation("ConstructorWalking")
+	match enemy_type:
+		"construction_enemy", "spectral_enemy":
+			try_play_animation("ConstructorWalking")
 
 func _on_grabbed(_pickable: Variant, _by: Variant) -> void:
-    ragdoll = true
-    play_held_animation()
+	ragdoll = true
+	play_held_animation()
 
 func _on_dropped(_pickable: Variant) -> void:
-    if animation_player:
-        animation_player.stop()
-    # TODO: Make ragdoll better
-    #if physical_bone_simulator_3d:
-    #    physical_bone_simulator_3d.physical_bones_start_simulation()
+	if animation_player:
+		animation_player.stop()
+	# TODO: Make ragdoll better
+	#if physical_bone_simulator_3d:
+	#    physical_bone_simulator_3d.physical_bones_start_simulation()
 
 func _set_ragdoll(value: bool) -> void:
-    var orig = ragdoll
-    ragdoll = value
-    if ragdoll and not orig:
-        enemy_hitbox.set_deferred("monitorable", false)
-        enemy_hitbox.set_deferred("monitorable", false)
-        enemy_collision_shape_3d.disabled = true
-        set_collision_layer_value(3, false)
-        set_collision_layer_value(5, false)
-        set_collision_mask_value(3, false)
-        Events.enemy_died.emit()
-        despawn_timer.start()
+	var orig = ragdoll
+	ragdoll = value
+	if ragdoll and not orig:
+		enemy_hitbox.set_deferred("monitorable", false)
+		enemy_hitbox.set_deferred("monitorable", false)
+		enemy_collision_shape_3d.disabled = true
+		set_collision_layer_value(3, false)
+		set_collision_layer_value(5, false)
+		set_collision_mask_value(3, false)
+		Events.enemy_died.emit()
+		despawn_timer.start()
 
 func _on_despawn_timer_timeout() -> void:
-    queue_free()
+	queue_free()

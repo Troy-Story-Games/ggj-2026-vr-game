@@ -62,6 +62,9 @@ visible = false
 mesh = SubResource("BoxMesh_14vxq")
 skeleton = NodePath("../..")
 
+[node name="Setting_Floor" type="CSGBox3D" parent="StaticBody3D" unique_id=523450683]
+transform = Transform3D(4.344917, 0, 0, 0, 0.22043937, 0, 0, 0, 3.8744032, 0, -0.88450444, 0)
+
 [node name="Table" parent="." unique_id=903607088 instance=ExtResource("3_o3d45")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12893671, -0.38354272)
 
@@ -83,27 +86,27 @@ scene_properties_keys = PackedStringArray("main_menu.gd")
 [node name="construction_enemy" parent="MainMenu3D/ConstructorTutorial" unique_id=878544191 instance=ExtResource("8_23kjk")]
 transform = Transform3D(1, 0, 9.313226e-09, 0, 1, 0, -9.313226e-09, 0, 1, 0.3956702, -0.6884849, 1.5204204)
 
-[node name="Skeleton3D" parent="MainMenu3D/ConstructorTutorial/construction_enemy/Constructor" parent_id_path=PackedInt32Array(878544191, 227476989) index="0" unique_id=1300441590]
+[node name="Skeleton3D" parent="MainMenu3D/ConstructorTutorial/construction_enemy/Constructor" parent_id_path=PackedInt32Array(878544191, 1249084881) index="0" unique_id=608570601]
 bones/0/rotation = Quaternion(-4.214684e-08, -0.70710665, 6.2803846e-16, 0.7071069)
 bones/9/rotation = Quaternion(-0.07660661, 0.35744888, 0.9106974, 0.1923329)
 
-[node name="ConstructorMesh" parent="MainMenu3D/ConstructorTutorial/construction_enemy/Constructor/Skeleton3D" index="0" unique_id=1918724958]
+[node name="ConstructorMesh" parent="MainMenu3D/ConstructorTutorial/construction_enemy/Constructor/Skeleton3D" index="0" unique_id=1518470306]
 transform = Transform3D(1, 0, 9.313226e-10, 0, 1, 0, -9.313226e-10, 0, 1, 0, 0, 0)
 
 [node name="Physical Bone Root" parent="MainMenu3D/ConstructorTutorial/construction_enemy/Constructor/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(878544191, 156431372) index="0" unique_id=27373009]
-transform = Transform3D(0.25974596, 0.92628855, -0.2729863, -3.0827966e-06, 0.28268984, 0.95921135, 0.96567696, -0.24915045, 0.0734304, 0.0016713142, 0.048266053, -0.015178114)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008045146, 0.0049132826, 0.031072771)
-body_offset = Transform3D(0.9656772, -0.24915014, 0.07343037, -3.1248737e-06, 0.28268993, 0.95921147, -0.25974566, -0.9262887, 0.2729864, -0.008826554, -0.03119427, -0.0018416345)
+transform = Transform3D(0.25974596, 0.92628855, -0.2729863, -3.0898589e-06, 0.28268984, 0.95921135, 0.96567696, -0.24915044, 0.073430404, 0.0016713142, 0.048266053, -0.015178114)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008045145, 0.0049132826, 0.031072771)
+body_offset = Transform3D(0.9656772, -0.24915013, 0.073430374, -3.131936e-06, 0.28268993, 0.95921147, -0.25974566, -0.9262887, 0.2729864, -0.008826554, -0.03119427, -0.0018416345)
 
 [node name="Physical Bone Spine" parent="MainMenu3D/ConstructorTutorial/construction_enemy/Constructor/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(878544191, 156431372) index="1" unique_id=1079660243]
-transform = Transform3D(1.704786e-06, -0.99999994, -6.007027e-08, 5.8809775e-08, 6.007038e-08, -1, 1, 1.704786e-06, 5.880987e-08, -0.00778991, 0.12360585, -0.007662058)
+transform = Transform3D(1.704786e-06, -0.99999994, -6.007027e-08, 5.858908e-08, 6.007038e-08, -1, 1, 1.704786e-06, 5.8589176e-08, -0.00778991, 0.12360585, -0.007662058)
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0013104778, -0.007619587, 0.019655464)
-body_offset = Transform3D(1.0000001, 1.3466924e-06, -7.9476337e-10, -7.9477047e-10, 4.6565557e-10, -1.0000001, -1.3471581e-06, 1.0000001, 4.656532e-10, -0.0013104677, 0.019655466, 0.0076195896)
+body_offset = Transform3D(1.0000001, 1.3466924e-06, -1.0154579e-09, -1.015465e-09, 4.6565557e-10, -1.0000001, -1.3471581e-06, 1.0000001, 4.656491e-10, -0.0013104677, 0.019655466, 0.0076195896)
 
 [node name="Physical Bone ShoulderL" parent="MainMenu3D/ConstructorTutorial/construction_enemy/Constructor/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(878544191, 156431372) index="2" unique_id=1807408360]
-transform = Transform3D(0.06557238, 0.532372, -0.843967, 0.43547684, 0.7457252, 0.504236, 0.8978085, -0.400592, -0.18293671, 0.016073108, 0.13345599, -0.0031572878)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00033787178, -5.433687e-05, 0.019238478)
-body_offset = Transform3D(1.0000002, -1.7493963e-05, -2.0340085e-05, -2.0384789e-05, -1.7017126e-05, -1.0000001, 1.758337e-05, 1.0000001, -1.6972423e-05, -0.0003374815, 0.019238487, 5.465746e-05)
+transform = Transform3D(0.06557238, 0.532372, -0.843967, 0.43547684, 0.7457252, 0.5042359, 0.8978085, -0.400592, -0.18293671, 0.016073108, 0.13345599, -0.0031572878)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00033787204, -5.433701e-05, 0.019238476)
+body_offset = Transform3D(1.0000002, -1.7493963e-05, -2.0354986e-05, -2.0384789e-05, -1.7017126e-05, -1.0000002, 1.758337e-05, 1.0000001, -1.6964972e-05, -0.0003374815, 0.019238487, 5.465746e-05)
 
 [node name="Physical Bone ShoulderR" parent="MainMenu3D/ConstructorTutorial/construction_enemy/Constructor/Skeleton3D/PhysicalBoneSimulator3D" parent_id_path=PackedInt32Array(878544191, 156431372) index="3" unique_id=314210567]
 transform = Transform3D(-0.20889007, 0.543264, 0.81316, -0.012192808, -0.83288586, 0.5533105, 0.97786313, 0.105666354, 0.18060552, -0.015530676, 0.13276577, -0.009990156)
@@ -120,7 +123,7 @@ transform = Transform3D(0.37050942, 0.4949015, -0.7859995, -0.20876847, 0.868946
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00013899419, 4.4043412e-05, 0.01253711)
 body_offset = Transform3D(1.0000001, 2.2843584e-05, -4.529953e-06, -4.4703484e-06, 8.136999e-05, -1, -2.2904418e-05, 1.0000001, 8.142862e-05, -0.00013893843, 0.012537107, -4.506111e-05)
 
-[node name="AnimationPlayer" parent="MainMenu3D/ConstructorTutorial/construction_enemy" index="1" unique_id=1823016758]
+[node name="AnimationPlayer" parent="MainMenu3D/ConstructorTutorial/construction_enemy" index="1" unique_id=183590370]
 autoplay = &"ConstructorWalking"
 
 [node name="MenuTutorialCard3DConstructor" parent="MainMenu3D/ConstructorTutorial" unique_id=531426624 instance=ExtResource("14_dvrlu")]
@@ -133,7 +136,7 @@ or smashing!"
 [node name="SpectralEnemy" parent="MainMenu3D/SpectralTutorial" unique_id=1406747159 instance=ExtResource("9_kucvp")]
 transform = Transform3D(1, 0, 9.778887e-09, 0, 1, 0, -9.778887e-09, 0, 1, -0.097991735, -0.7023493, 1.509623)
 
-[node name="Skeleton3D" parent="MainMenu3D/SpectralTutorial/SpectralEnemy/Ghost" parent_id_path=PackedInt32Array(1406747159, 1932793693) index="0" unique_id=1089590684]
+[node name="Skeleton3D" parent="MainMenu3D/SpectralTutorial/SpectralEnemy/Ghost" parent_id_path=PackedInt32Array(1406747159, 542034393) index="0" unique_id=1703482513]
 bones/0/position = Vector3(-0.00017031813, 0.079460315, -0.0063515813)
 bones/0/rotation = Quaternion(-4.214684e-08, -0.70710665, 6.2803846e-16, 0.7071069)
 bones/1/position = Vector3(-0.05244294, -0.06226021, -0.017944034)
@@ -153,7 +156,7 @@ bones/11/position = Vector3(1.8391244e-10, 0.0019953228, -0.003135503)
 bones/11/rotation = Quaternion(0.84388036, -0.18783094, -0.11040434, -0.49030235)
 bones/12/rotation = Quaternion(-0.452596, 0.22219473, 0.12945765, 0.85383093)
 
-[node name="AnimationPlayer" parent="MainMenu3D/SpectralTutorial/SpectralEnemy" index="1" unique_id=1085800521]
+[node name="AnimationPlayer" parent="MainMenu3D/SpectralTutorial/SpectralEnemy" index="1" unique_id=1412598336]
 autoplay = &"ConstructorWalking"
 
 [node name="MenuTutorialCard3DSpectral" parent="MainMenu3D/SpectralTutorial" unique_id=303154962 instance=ExtResource("14_dvrlu")]
@@ -167,11 +170,11 @@ transform = Transform3D(1, 0, 1.8626451e-09, 0, 1, 0, -1.8626451e-09, 0, 1, -0.2
 [node name="forklift_enemy" parent="MainMenu3D/ForkliftTutorial" unique_id=1240043831 instance=ExtResource("10_2ufnl")]
 transform = Transform3D(0.06486503, 0, 0.49577466, 0, 0.5, 0, -0.49577466, 0, 0.06486503, -0.43425915, -0.14824408, -0.43469617)
 
-[node name="Skeleton3D" parent="MainMenu3D/ForkliftTutorial/forklift_enemy/ForkliftMesh/Armature" parent_id_path=PackedInt32Array(1240043831, 499681322) index="0" unique_id=165402141]
+[node name="Skeleton3D" parent="MainMenu3D/ForkliftTutorial/forklift_enemy/ForkliftMesh/Armature" parent_id_path=PackedInt32Array(1240043831, 1468005409) index="0" unique_id=427086087]
 bones/0/rotation = Quaternion(-2.019484e-28, 0, 0, 1)
 bones/1/rotation = Quaternion(-0.7071068, -6.966547e-08, 0.7071068, -4.490981e-09)
 
-[node name="AnimationPlayer" parent="MainMenu3D/ForkliftTutorial/forklift_enemy" index="1" unique_id=521263222]
+[node name="AnimationPlayer" parent="MainMenu3D/ForkliftTutorial/forklift_enemy" index="1" unique_id=1617234265]
 autoplay = &"ForkliftDriving"
 
 [node name="MenuTutorialCard3DForklift" parent="MainMenu3D/ForkliftTutorial" unique_id=1830239783 instance=ExtResource("14_dvrlu")]
